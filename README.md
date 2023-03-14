@@ -21,4 +21,8 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* To Run Project Do : 
+
+bin/rails db:migrate
+
+bin/rails server
