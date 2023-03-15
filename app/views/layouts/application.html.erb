@@ -7,9 +7,17 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link rel="stylesheet" href='https://cdn.simplecss.org/simple.min.css'>
+    <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <%= yield %>
   </body>
+
 </html>
+  <%# <style>
+  *,body{
+    background-color:white !important;
+  }
+  </style> %>

@@ -1,26 +1,14 @@
 class CommentsController < ApplicationController
+    before_action :set_post
 
-  http_basic_authenticate_with name: "test", password: "test", only: :destroy
+    def create
+        @post.comments.create! params.required(:comment).permit(:content)
+        CommentsMailer.submitted(comment).deliver_later
+        redirect_to @post
+    end    
 
-  def create
-    @article = Article.find(params[:article_id])
-  end
-
-  def create
-    @article = Article.find(params[:article_id])
-    @comment = @article.comments.create(comment_params)
-    redirect_to article_path(@article)
-  end
-
-  def destroy
-    @article = Article.find(params[:article_id])
-    @comment = @article.comments.find(params[:id])
-    @comment.destroy
-    redirect_to article_path(@article), status: :see_other
-  end
-
-  private
-    def comment_params
-      params.require(:comment).permit(:commenter, :body, :status)
-    end
+    private
+        def set_post 
+           @post = Post.find(params[:post_id])
+        end    
 end
