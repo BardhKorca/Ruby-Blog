@@ -23,6 +23,8 @@ Things you may want to cover:
 
 * To Run Project Do : 
 
-bin/rails db:migrate
+1.bundle
 
-bin/rails server
+2.rails db:migrate
+
+3.rails server
